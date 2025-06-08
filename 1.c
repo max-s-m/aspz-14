@@ -27,7 +27,7 @@ int main(){
 void timer_handler(int sig){
     char buf[50];
     snprintf(buf, sizeof(buf), "No req for %d seconds, shutting down\n", TIME);
-    //write() замість printf() безпечніше для хендлера (async-signal-safe)
+    //write() замість printf() безпечніше для хендлера (reentrant-safe)
     write(STDOUT_FILENO, buf, sizeof(buf));
     exit(0);
 }
